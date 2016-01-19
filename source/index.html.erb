@@ -1,0 +1,71 @@
+---
+title: 89.3 KPCC
+---
+
+<div class="bound">
+  <% data.Content.find_all{|p| p.homepage =="yes"}.each do |p| %>
+  
+    <% tag = if p.source != "KPCC"
+                p.source
+             elsif p.tags__title?
+                p.tags__title
+             elsif p.program?
+                p.program
+             elsif p.category__title?
+                p.category__title
+             end
+    %>
+
+    <div class="media">
+      <% if p.image_src? && p.image_display == "large" %>
+        <a href="<%= p.public_url %>" class="media__image-parent">
+          <img src="<%= p.image_src %>" class="media__image large">
+        </a>
+      <% end %>
+      <div class="clearfix">
+        <div class="media__content">
+          <% if p.image_src? && p.image_display == "med" %>
+            <a href="<%= p.public_url %>" class="media__image-parent">
+              <img src="<%= p.image_src %>" class="media__image med">
+            </a>
+          <% end %>
+          <h2 class="media__headline"><a href="<%= p.public_url %>"><%= p.short_title %></a></h2>
+          <p class="media__summary"><%= p.teaser %></p>
+          <% if p.related_content? %>
+            <h5 class="media__related-heading">More in <%= tag %></h5>
+            <% data.RelatedContent.find_all{|r| r.obj_key == p.related_content}.each do |r| %>
+              <a class="media--subordinate" href="#">
+                <img class="media__image--thumb" src="<%= r.image_src %>" alt="">
+                <h4 class="media__headline--subordinate"><%= r.short_title %></h4>
+              </a>
+            <% end %>
+          <% elsif p.program? %>
+            <a class="media__appeal" href="<%= p.public_url %>">
+              <% if p.program == "AirTalk" %>
+                <img src="images/conversation.svg">
+                Join the conversation
+              <% elsif p.program == "KPCC In Person" %>
+                <img src="images/event.svg">
+                RSVP for this event
+              <% else %>
+                <img src="images/podcast.svg">
+                Subscribe to <%= p.program %>'s podcast
+              <% end %>
+            </a>
+          <% end %>
+        </div>
+        <aside class="media__metadata">
+          <% if tag != nil %>
+            <span class="media__category">
+              <%= tag %>
+              <% if p.source != "KPCC" %>
+                <img src="images/outbound.svg">
+              <% end %>
+            </span>
+          <% end %>
+        </aside>
+      </div>
+    </div>
+  <% end %>
+
+</div><!-- .welcome -->
