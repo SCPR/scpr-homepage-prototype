@@ -30,7 +30,7 @@ title: 89.3 KPCC
             </a>
           <% end %>
           <h2 class="media__headline"><a href="<%= p.public_url %>"><%= p.short_title %></a></h2>
-          <p class="media__summary"><%= p.teaser %></p>
+          <div class="media__summary"><%= simple_format(p.summary) %></div>
           <% if p.related_content? %>
             <h5 class="media__related-heading">More in <%= tag %></h5>
             <% data.RelatedContent.find_all{|r| r.obj_key == p.related_content}.each do |r| %>
