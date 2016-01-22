@@ -15,6 +15,24 @@
   </head>
 
   <body class="<%= page_classes %>">
+    <header class="header">
+      <div class="bound full-width clearfix">
+        <img src="http://projects.scpr.org/officer-involved/images/logo_kpcc-black.svg" alt="89.3 KPCC" class="desaturate">
+        <nav class="nav">
+          <ul class="nav__links">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
     <%= yield %>
+    <footer class="footer">
+      <img src="../images/cheese.svg" alt="Cheese">
+    </footer>
   </body>
 </html>
