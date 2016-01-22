@@ -3,7 +3,7 @@ title: 89.3 KPCC
 ---
 
 <div class="bound">
-  <% data.Content.find_all{|p| p.homepage =="yes"}.each do |p| %>
+  <% data.Content.find_all{|p| p.homepage =="yes"}.each_with_index do |p, index| %>
   
     <% tag = if p.source != "KPCC"
                 p.source
@@ -16,27 +16,46 @@ title: 89.3 KPCC
              end
     %>
 
+    <% if index == 0 %>
+      <aside class="ad first">
+        <img src="http://placehold.it/300x50?text=Position+A" alt="Position A">
+      </aside>
+    <% elsif index == 1 %>
+      <aside class="ad">
+        <img src="http://placehold.it/300x250?text=Position+B" alt="Position B">
+      </aside>
+    <% elsif index == 7 %>
+      <aside class="ad">
+        <img src="http://placehold.it/300x250?text=Position+C" alt="Position C">
+      </aside>
+    <% end %>
+
     <div class="media">
       <% if p.image_src? && p.image_display == "large" %>
         <a href="<%= p.public_url %>" class="media__image-parent">
           <img src="<%= p.image_src %>" class="media__image large">
         </a>
       <% end %>
-      <div class="clearfix">
+      <div class="media__container clearfix">
         <div class="media__content">
           <% if p.image_src? && p.image_display == "med" %>
             <a href="<%= p.public_url %>" class="media__image-parent">
               <img src="<%= p.image_src %>" class="media__image med">
             </a>
           <% end %>
-          <h2 class="media__headline"><a href="<%= p.public_url %>"><%= p.short_title %></a></h2>
+          <h2 class="media__headline <%= p.image_display %>"><a href="<%= p.public_url %>"><%= p.short_title %></a></h2>
           <div class="media__summary"><%= simple_format(p.summary) %></div>
           <% if p.related_content? %>
             <h5 class="media__related-heading">More in <%= tag %></h5>
             <% data.RelatedContent.find_all{|r| r.obj_key == p.related_content}.each do |r| %>
-              <a class="media--subordinate" href="#">
+              <a class="media--subordinate clearfix<% if r.teaser? %> full<% end %>" href="<%= r.public_url %>">
                 <img class="media__image--thumb" src="<%= r.image_src %>" alt="">
-                <h4 class="media__headline--subordinate"><%= r.short_title %></h4>
+                <div class="media__content">
+                  <h4 class="media__headline--subordinate"><%= r.short_title %></h4>
+                  <% if r.teaser? %>
+                    <p class="media__summary--subordinate"><%= r.teaser %></p>
+                  <% end %>
+                </div>
               </a>
             <% end %>
           <% elsif p.program? %>
@@ -49,7 +68,7 @@ title: 89.3 KPCC
                 RSVP for this event
               <% else %>
                 <img src="images/podcast.svg">
-                Subscribe to <%= p.program %>'s podcast
+                Love <%= p.program %>? Subscribe to the podcast!
               <% end %>
             </a>
           <% end %>
@@ -66,6 +85,7 @@ title: 89.3 KPCC
         </aside>
       </div>
     </div>
+      
   <% end %>
 
 </div><!-- .welcome -->
