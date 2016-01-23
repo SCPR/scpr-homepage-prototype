@@ -21,7 +21,6 @@ activate :google_drive, load_sheets: '1x178PMDJDr2JWIBukv6JrLOfJD529Gcnbx4BCanbI
 
 activate :deploy do |deploy|
   deploy.method = :git
-  deploy.branch = 'master'
   deploy.build_before = true
 end
 
