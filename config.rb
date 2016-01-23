@@ -43,8 +43,7 @@ end
 # Build-specific configuration
 configure :build do
   # Minify CSS on build
-  # activate :minify_css
-
-  # Minify Javascript on build
-  # activate :minify_javascript
+  activate :minify_css
+  # Relative assets needed to deploy to Github Pages
+  activate :relative_assets
 end
