@@ -19,6 +19,12 @@ page '/*.txt', layout: false
 # General configuration
 activate :google_drive, load_sheets: '1x178PMDJDr2JWIBukv6JrLOfJD529Gcnbx4BCanbISM' 
 
+activate :deploy do |deploy|
+  deploy.method = :git
+  deploy.branch = 'master'
+  deploy.build_before = true
+end
+
 # Reload the browser automatically whenever files change
 configure :development do
   activate :livereload
@@ -42,8 +48,4 @@ configure :build do
 
   # Minify Javascript on build
   # activate :minify_javascript
-end
-
-activate :deploy do |deploy|
-  deploy.deploy_method = :git
 end
