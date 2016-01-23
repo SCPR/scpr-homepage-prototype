@@ -12,3 +12,4 @@ gem 'tzinfo-data', platforms: [:mswin, :mingw, :jruby]
 gem 'middleman', '3.2.0'
 gem 'middleman-livereload'
 gem 'middleman-google_drive'
+gem 'middleman-deploy', '~> 1.0'
