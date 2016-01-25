@@ -81,6 +81,23 @@
   }
 }
 
+.tuned-in {
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 56px;
+  h5 {
+    color: #666;
+    display: inline-block;
+  }
+  ul {
+    display: inline-block;
+    vertical-align: sub;
+  }
+  li {
+    margin-top: 0px;
+    width: 150px;
+  }
+}
+
 .media {
   border-bottom: 1px solid #ccc;
   margin-bottom: 36px;
@@ -101,7 +118,11 @@
 }
 .media--subordinate {
   color: black;
+  display: block;
   text-decoration: none;
+  &:nth-of-type(2) {
+    margin-top: 24px;
+  }
   .media__content {
     border-left: 0;
     display: inline-block;
