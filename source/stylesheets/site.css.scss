@@ -10,6 +10,9 @@
   &.full-width {
     max-width: 100%;
     margin: 0 36px;
+    @media screen and (max-width: 768px) {
+      margin: 0 10px;
+    }
   }
 }
 
@@ -35,6 +38,14 @@
 .header {
   background: #efefef;
   padding: 18px 0;
+  @media screen and (max-width: 768px) {
+    background: #fff;
+    padding: 14px 0;
+    text-align: center;
+    img {
+      width: 120px;
+    }
+  }
 }
 
 .footer {
@@ -81,9 +92,38 @@
   }
 }
 
+.broadcast-bar {
+  display: none;
+  @media screen and (max-width: 768px) {
+    background: #E9E9E9;
+    display: block;
+    text-align: center;
+  }
+  img, h5, h6 {
+    display: inline-block;
+  }
+  img {
+    vertical-align: middle;
+    margin-right: 3px;
+  }
+  h5 {
+    font-size: 12px;
+    margin: 13px 0;
+    text-transform: uppercase;
+  }
+  h6 {
+    color: #5B5B5B;
+    font-size: 12px;
+    margin: 13px 0;
+  }
+}
+
 .tuned-in {
   border-bottom: 1px solid #ccc;
   margin-bottom: 56px;
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
   h5 {
     color: #666;
     display: inline-block;
