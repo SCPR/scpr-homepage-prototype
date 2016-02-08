@@ -2,7 +2,7 @@
 @import "normalize";
 
 .bound {
-  margin: 80px auto;
+  margin: 20px auto 80px;
   max-width: 960px;
   @media screen and (max-width: 768px) {
     margin: 36px auto;
@@ -19,6 +19,10 @@
 .desaturate {
   -webkit-filter: grayscale(100%);
   filter: grayscale(100%);
+}
+
+a {
+  color: black;
 }
 
 .clearfix:before,
@@ -86,9 +90,8 @@
   text-align: center;
   &.first {
     border-bottom: 0;
-    @media screen and (max-width: 768px) {
-      padding-bottom: 0;
-    }
+    margin-top: 36px;
+    padding-bottom: 0;
   }
 }
 
@@ -118,7 +121,7 @@
   }
 }
 
-.tuned-in {
+.hot-topics {
   border-bottom: 1px solid #ccc;
   margin-bottom: 56px;
   @media screen and (max-width: 768px) {
@@ -130,11 +133,13 @@
   }
   ul {
     display: inline-block;
-    vertical-align: sub;
+    vertical-align: middle;
   }
   li {
+    background: transparent;
+    font-size: 13px;
     margin-top: 0px;
-    width: 150px;
+    width: auto;
   }
 }
 
