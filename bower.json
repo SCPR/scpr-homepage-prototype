@@ -1,0 +1,19 @@
+{
+  "name": "scpr-homepage-prototype",
+  "homepage": "https://github.com/SCPR/scpr-homepage-prototype",
+  "authors": [
+    "Sean Dillingham <sean.dillingham@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

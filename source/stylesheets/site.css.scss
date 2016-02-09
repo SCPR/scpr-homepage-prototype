@@ -183,7 +183,7 @@ a {
 .media__container {
   position: relative;
   @media screen and (max-width: 900px) {
-    padding: 0 20px;
+    padding: 0 30px;
   }
   @media screen and (max-width: 768px) {
     display: flex;
@@ -294,10 +294,27 @@ a {
 }
 .media__headline a {
   color: black;
+  position: relative;
   text-decoration: none;
-}
-.media__headline a:hover {
-  text-decoration: underline;
+  &:hover {
+    text-decoration: underline;
+  }
+  svg {
+    position: absolute;
+    top: 10px;
+    left: -28px;
+    @media screen and (max-width: 768px) {
+      width: 12px;
+      top: 6px;
+      left: -20px;
+    }
+  }
+  &:visited {
+    color: #888;
+    svg path {
+      fill: #ccc;
+    }
+  }
 }
 .media__summary {
   font-size: 15px;
