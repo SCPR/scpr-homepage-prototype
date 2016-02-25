@@ -40,6 +40,11 @@ end
 #   end
 # end
 
+# Add path to Bower components directory
+after_configuration do
+ sprockets.append_path File.join "#{root}", "bower_components"
+end
+
 # Build-specific configuration
 configure :build do
   # Minify CSS on build

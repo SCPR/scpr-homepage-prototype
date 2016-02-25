@@ -2,7 +2,14 @@
 title: 89.3 KPCC
 ---
 
-<div class="bound">
+<section class="bound">
+  <header class="status notify">
+    <p class="status__message">
+      <img src="images/notification.svg" />
+      <b>3 new posts</b> 
+      since 6:22 AM
+    </p>
+  </header>
 
   <% data.Content.find_all{|p| p.homepage =="yes"}.each_with_index do |p, index| %>
   
@@ -42,7 +49,19 @@ title: 89.3 KPCC
           <% end %>
           <h2 class="media__headline <%= p.image_display %>">
             <a href="<%= p.public_url %>">
-              <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns" width="16" height="15" viewBox="0 0 16 15" version="1.1">
+              <% if index == 0 || 1 || 2 %>
+                <svg class="unread" width="12px" height="12px" viewBox="0 0 12 12" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                    <title>Unread</title>
+                    <g id="Delightful-Features" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+                        <g id="Let-me-know-how-recently-this-page-has-been-updated-(from-my-perspective)" sketch:type="MSArtboardGroup" transform="translate(-581.000000, -282.000000)" fill="#00C2FF">
+                            <g id="Unread-Story" sketch:type="MSLayerGroup" transform="translate(581.000000, 282.000000)">
+                                <circle id="Oval-7" sketch:type="MSShapeGroup" cx="6" cy="6" r="6"></circle>
+                            </g>
+                        </g>
+                    </g>
+                </svg>
+              <% end %>
+              <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns" width="16" height="15" viewBox="0 0 16 15" version="1.1">
                 <title>
                   checkmark
                 </title>
@@ -105,11 +124,11 @@ title: 89.3 KPCC
               <% end %>
             </span>
           <% end %>
-          <%= p.published_at %>
+          <time class="media__timestamp timeago" datetime="<%= p.published_at %>"><%= p.published_at %></time>
         </aside>
       </div>
     </div>
       
   <% end %>
 
-</div><!-- .welcome -->
+</section><!-- .welcome -->
